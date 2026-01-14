@@ -1,0 +1,4 @@
+# Flux Operator values
+# See upstream chart for all options
+flux-operator: {}
+

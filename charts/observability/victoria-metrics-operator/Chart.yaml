@@ -1,0 +1,9 @@
+apiVersion: v2
+name: victoria-metrics-operator
+version: 0.57.1
+description: Wrapper for Victoria Metrics Operator
+dependencies:
+- name: victoria-metrics-operator
+  version: 0.57.1
+  repository: file://charts/victoria-metrics-operator
+

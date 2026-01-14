@@ -1,0 +1,9 @@
+apiVersion: v2
+name: metrics-server
+version: 3.13.0
+description: Wrapper for Metrics Server
+dependencies:
+- name: metrics-server
+  version: 3.13.0
+  repository: file://charts/metrics-server
+

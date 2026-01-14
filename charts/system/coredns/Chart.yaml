@@ -1,0 +1,9 @@
+apiVersion: v2
+name: coredns
+version: 1.45.0
+description: Wrapper for CoreDNS
+dependencies:
+- name: coredns
+  version: 1.45.0
+  repository: file://charts/coredns
+

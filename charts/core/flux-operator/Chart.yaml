@@ -1,0 +1,9 @@
+apiVersion: v2
+name: flux-operator
+version: 0.38.1
+description: Wrapper for flux-operator
+dependencies:
+  - name: flux-operator
+    version: 0.38.1
+    repository: file://charts/flux-operator
+

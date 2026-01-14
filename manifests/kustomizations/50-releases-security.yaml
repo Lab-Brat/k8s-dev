@@ -1,0 +1,21 @@
+# Kustomization for security releases
+# Watches manifests/releases/security/ and applies HelmReleases
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: releases-security
+  namespace: flux-system
+spec:
+  interval: 10m
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  path: ./manifests/releases/security
+  prune: true
+  wait: true
+  dependsOn:
+    - name: releases-ingress
+

@@ -1,0 +1,9 @@
+metrics-server:
+  replicas: 1
+  args:
+  - --kubelet-insecure-tls
+  metrics:
+    enabled: false
+  serviceMonitor:
+    enabled: false
+

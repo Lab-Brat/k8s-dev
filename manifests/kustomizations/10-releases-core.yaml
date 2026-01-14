@@ -1,0 +1,21 @@
+# Kustomization for core releases
+# Watches manifests/releases/core/ and applies HelmReleases
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: releases-core
+  namespace: flux-system
+spec:
+  interval: 10m
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  path: ./manifests/releases/core
+  prune: true
+  wait: true
+  dependsOn:
+    - name: namespaces
+

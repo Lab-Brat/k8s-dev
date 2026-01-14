@@ -1,0 +1,39 @@
+# HelmRelease for metrics-server
+# Category: system
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: metrics-server
+  namespace: metrics-server
+spec:
+  interval: 30m
+  timeout: 5m
+  releaseName: metrics-server
+  install:
+    crds: CreateReplace
+    createNamespace: false
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: ./charts/system/metrics-server
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 12h
+  values:
+    metrics-server:
+      replicas: 1
+      args:
+      - --kubelet-insecure-tls
+      metrics:
+        enabled: false
+      serviceMonitor:
+        enabled: false
+
+

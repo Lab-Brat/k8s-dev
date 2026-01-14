@@ -1,0 +1,23 @@
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# SECURITY - Never commit private keys!
+.age/key.txt
+*.agekey
+*.pem
+id_*
+!*.pub
+secrets/
+*.key
+*.secret
+
+# Temp files from bootstrap
+.flux-*.yaml
+*.tmp
+
+# Helm
+.cache/
+*.tgz
+

@@ -1,0 +1,72 @@
+# K8s Bootstrap Configuration v2.0
+# Import this file to restore your selections
+version: '2.0'
+created_at: '2026-01-14T22:49:59.073432'
+cluster_name: skulikov-mega-cluster-4
+repo_url: git@github.com:Lab-Brat/k8s-dev.git
+branch: main
+selections:
+- id: flux-operator
+  enabled: true
+  values:
+    hostNetwork: false
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+    securityContext:
+      runAsNonRoot: true
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+      seccompProfile:
+        type: RuntimeDefault
+  rawOverrides: ''
+- id: prometheus-operator-crds
+  enabled: true
+  values: {}
+  rawOverrides: ''
+- id: cert-manager-crds
+  enabled: true
+  values:
+    installCRDs: true
+  rawOverrides: ''
+- id: flux-instance
+  enabled: true
+  values:
+    distribution:
+      version: 2.x
+      registry: ghcr.io/fluxcd
+    components:
+      source: true
+      kustomize: true
+      helm: true
+      notification: true
+      imageAutomation: false
+  rawOverrides: ''
+- id: coredns
+  enabled: true
+  values: {}
+  rawOverrides: ''
+- id: metrics-server
+  enabled: true
+  values: {}
+  rawOverrides: ''
+- id: cert-manager
+  enabled: true
+  values: {}
+  rawOverrides: ''
+- id: ingress-nginx
+  enabled: true
+  values: {}
+  rawOverrides: ''
+- id: victoria-metrics-operator
+  enabled: true
+  values: {}
+  rawOverrides: ''
+

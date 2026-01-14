@@ -1,0 +1,15 @@
+ingress-nginx:
+  controller:
+    replicaCount: 2
+    service:
+      type: ClusterIP
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: false
+    admissionWebhooks:
+      enabled: true
+    config:
+      use-forwarded-headers: 'true'
+      compute-full-forwarded-for: 'true'
+

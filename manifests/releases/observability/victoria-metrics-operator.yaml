@@ -1,0 +1,36 @@
+# HelmRelease for victoria-metrics-operator
+# Category: observability
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: victoria-metrics-operator
+  namespace: victoria-metrics
+spec:
+  interval: 30m
+  timeout: 10m
+  releaseName: victoria-metrics-operator
+  install:
+    crds: CreateReplace
+    createNamespace: false
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: ./charts/observability/victoria-metrics-operator
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 12h
+  values:
+    victoria-metrics-operator:
+      operator:
+        enable_converter_ownership: true
+      serviceMonitor:
+        enabled: true
+
+

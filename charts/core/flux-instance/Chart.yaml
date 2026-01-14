@@ -1,0 +1,6 @@
+apiVersion: v2
+name: flux-instance
+version: 0.0.1
+description: Flux GitOps configuration (GitRepository + Kustomizations + Secrets)
+type: application
+

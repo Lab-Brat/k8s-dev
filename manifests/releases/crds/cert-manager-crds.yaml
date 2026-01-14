@@ -1,0 +1,33 @@
+# HelmRelease for cert-manager-crds
+# Category: crds
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cert-manager-crds
+  namespace: cluster-crds
+spec:
+  interval: 30m
+  timeout: 10m
+  releaseName: cert-manager-crds
+  install:
+    crds: CreateReplace
+    createNamespace: false
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: ./charts/crds/cert-manager-crds
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 12h
+  values:
+    cert-manager:
+      installCRDs: true
+
+
